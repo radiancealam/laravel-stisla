@@ -14,7 +14,9 @@ class MediaSeeder extends Seeder
      */
     public function run()
     {
-        Media::create([
+        Media::truncate();
+
+        Media::insert([
             [
                 'media_name' => 'Telephone',
                 'media_description' => 'Source from Telephone'

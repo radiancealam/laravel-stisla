@@ -14,7 +14,9 @@ class StatusSeeder extends Seeder
      */
     public function run()
     {
-        Status::create([
+        Status::truncate();
+
+        Status::insert([
             [
                 'sts_name' => 'Open',
                 'sts_description' => 'Ticket Open'

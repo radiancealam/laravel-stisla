@@ -14,7 +14,9 @@ class PrioritySeeder extends Seeder
      */
     public function run()
     {
-        Priority::create([
+        Priority::truncate();
+
+        Priority::insert([
             [
                 'pty_name' => 'Low',
                 'pty_description' => 'Low Priority'
