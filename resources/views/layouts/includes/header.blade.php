@@ -27,7 +27,6 @@
     <script src="{{ asset('assets/js/stisla.js') }}"></script>
 
     <!-- JS Libraies -->
-    @stack('script')
 
     <!-- Page Specific JS File -->
 
