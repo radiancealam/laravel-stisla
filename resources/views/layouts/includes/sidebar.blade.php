@@ -8,15 +8,15 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class="active">
-                <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+            <li class="{{ $title == 'Dashboard' ? 'active' : '' }}">
+                <a href="{{ url('/home') }}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
             <li class="menu-header">Menu</li>
-            <li class="dropdown">
+            <li class="dropdown {{ $title == 'Ticket' ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-ticket-alt"></i>
                     <span>Ticket</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="#">Manage Ticket</a></li>
+                    <li class="{{ $title == 'Ticket' ? 'active' : '' }}"><a class="nav-link" href="{{ route('ticket.index') }}">Manage Ticket</a></li>
                 </ul>
             </li>
             <li class="dropdown">
