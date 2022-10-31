@@ -81,13 +81,17 @@
 
     {{-- Statistik --}}
     <div class="row">
-        <div class="col-12">
+        <div class="col-8">
             <div class="card">
-                <div class="card-header">
-                    <h4>Statistik</h4>
-                </div>
                 <div class="card-body">
-                    <div id="myChart"></div>
+                    <div id="myColumnChart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <div id="myPieChart"></div>
                 </div>
             </div>
         </div>
@@ -143,49 +147,45 @@
     <script src="{{ asset('assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js') }}"></script>
     <script src="{{ asset('assets/modules/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('assets/js/page/modules-datatables.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $('#myTable').DataTable();
-        });
-    </script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script>
-        Highcharts.chart('myChart', {
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
+    <script>
+        // Column Chart
+        Highcharts.chart('myColumnChart', {
             chart: {
                 type: 'column'
             },
             title: {
-                text: 'Emissions to air in Norway'
-            },
-            subtitle: {
-                text: 'Source: ' +
-                    '<a href="https://www.ssb.no/en/statbank/table/08940/" ' +
-                    'target="_blank">SSB</a>'
+                text: 'Frekuensi Troble Ticket'
             },
             xAxis: {
                 categories: [
-                    '2010',
-                    '2011',
-                    '2012',
-                    '2013',
-                    '2014',
-                    '2015',
-                    '2016',
-                    '2017',
-                    '2018',
-                    '2019',
-                    '2010',
-                    '2021'
+                    'Jan',
+                    'Feb',
+                    'Mar',
+                    'Apr',
+                    'Mei',
+                    'Jun',
+                    'Jul',
+                    'Agu',
+                    'Sep',
+                    'Okt',
+                    'Nov',
+                    'Des'
                 ],
                 crosshair: true
             },
             yAxis: {
                 title: {
                     useHTML: true,
-                    text: 'Million tonnes CO<sub>2</sub>-equivalents'
+                    text: 'Total Ticket'
                 }
             },
             tooltip: {
@@ -203,31 +203,71 @@
                 }
             },
             series: [{
-                name: 'Oil and gas extraction',
+                name: 'Ticket Opened',
                 data: [13.93, 13.63, 13.73, 13.67, 14.37, 14.89, 14.56,
                     14.32, 14.13, 13.93, 13.21, 12.16
                 ]
 
             }, {
-                name: 'Manufacturing industries and mining',
-                data: [12.24, 12.24, 11.95, 12.02, 11.65, 11.96, 11.59,
-                    11.94, 11.96, 11.59, 11.42, 11.76
-                ]
-
-            }, {
-                name: 'Road traffic',
+                name: 'Ticket Pending',
                 data: [10.00, 9.93, 9.97, 10.01, 10.23, 10.26, 10.00,
                     9.12, 9.36, 8.72, 8.38, 8.69
                 ]
 
             }, {
-                name: 'Agriculture',
-                data: [4.35, 4.32, 4.34, 4.39, 4.46, 4.52, 4.58, 4.55,
-                    4.53, 4.51, 4.49, 4.57
+                name: 'Ticket Closed',
+                data: [12.24, 12.24, 11.95, 12.02, 11.65, 11.96, 11.59,
+                    11.94, 11.96, 11.59, 11.42, 11.76
                 ]
 
             }]
         });
 
+        // Pie Chart
+        Highcharts.chart('myPieChart', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Persentase Troble Ticket'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                name: 'Trouble Ticket',
+                colorByPoint: true,
+                data: [{
+                    name: 'Opened',
+                    y: 70.67,
+                    sliced: true,
+                    selected: true
+                }, {
+                    name: 'Pending',
+                    y: 14.77
+                }, {
+                    name: 'Closed',
+                    y: 4.86
+                }, ]
+            }]
+        });
     </script>
 @endpush
