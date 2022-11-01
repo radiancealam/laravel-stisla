@@ -1,7 +1,13 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MediaController;
+use App\Http\Controllers\PriorityController;
+use App\Http\Controllers\ProblemController;
+use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,5 +34,11 @@ Auth::routes([
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('admin.home');
+    Route::resource('user', UserController::class);
     Route::resource('ticket', TicketController::class);
+    Route::resource('department', DepartmentController::class);
+    Route::resource('media', MediaController::class);
+    Route::resource('priority', PriorityController::class);
+    Route::resource('problem', ProblemController::class);
+    Route::resource('status', StatusController::class);
 });

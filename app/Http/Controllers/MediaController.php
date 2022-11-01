@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Media;
 use Illuminate\Http\Request;
 
-class TicketController extends Controller
+class MediaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,9 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $title = 'Manage Ticket';
-        return view('admin.ticket.index', compact('title'));
+        $data = Media::latest()->get();
+        $title = 'Manage Media';
+        return view('admin.media.index', ['data' => $data, 'title' => $title]);
     }
 
     /**

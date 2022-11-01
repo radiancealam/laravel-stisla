@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Priority;
 use Illuminate\Http\Request;
 
-class TicketController extends Controller
+class PriorityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,9 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $title = 'Manage Ticket';
-        return view('admin.ticket.index', compact('title'));
+        $data = Priority::latest()->get();
+        $title = 'Manage Priority';
+        return view('admin.priority.index', ['data' => $data, 'title' => $title]);
     }
 
     /**

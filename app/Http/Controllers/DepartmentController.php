@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use Illuminate\Http\Request;
 
-class TicketController extends Controller
+class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,9 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $title = 'Manage Ticket';
-        return view('admin.ticket.index', compact('title'));
+        $data = Department::latest()->get();
+        $title = 'Manage Department';
+        return view('admin.department.index', ['data' => $data, 'title' => $title]);
     }
 
     /**

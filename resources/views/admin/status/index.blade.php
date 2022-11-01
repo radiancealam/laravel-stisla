@@ -9,7 +9,7 @@
 
 @section('content')
     <div class="section-header">
-        <h1>Ticket</h1>
+        <h1>Manage Status</h1>
     </div>
 
     {{-- Tabel Tiket --}}
@@ -17,7 +17,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Tabel Tiket</h4>
+                    <h4>Status</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -25,28 +25,18 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Priority</th>
-                                    <th>Customer</th>
-                                    <th>Problem</th>
-                                    <th>Message</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Status Name</th>
+                                    <th>Status Description</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($data as $d)
                                 <tr>
-                                    <td>1</td>
-                                    <td>
-                                        <div class="badge badge-danger">Urgent</div>
-                                    </td>
-                                    <td>AAAAA</td>
-                                    <td>Internet Problem</td>
-                                    <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, amet?</td>
-                                    <td>
-                                        <div class="badge badge-success">Closed</div>
-                                    </td>
-                                    <td><a href="#" class="btn btn-primary btn-sm">Details</a></td>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $d->sts_name }}</td>
+                                    <td>{{ $d->sts_description }}</td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

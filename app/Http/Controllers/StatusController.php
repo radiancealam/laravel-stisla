@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Status;
 use Illuminate\Http\Request;
 
-class TicketController extends Controller
+class StatusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,9 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $title = 'Manage Ticket';
-        return view('admin.ticket.index', compact('title'));
+        $data = Status::latest()->get();
+        $title = 'Manage Status';
+        return view('admin.status.index', ['data' => $data, 'title' => $title]);
     }
 
     /**
