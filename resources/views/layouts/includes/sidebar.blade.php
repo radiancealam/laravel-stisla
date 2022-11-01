@@ -9,7 +9,7 @@
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li class="{{ $title == 'Dashboard' ? 'active' : '' }}">
-                <a href="{{ url('/home') }}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+                <a href="{{ route('admin.home') }}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
             <li class="menu-header">Menu</li>
             <li class="dropdown {{ $title == 'Ticket' ? 'active' : '' }}">

@@ -26,8 +26,7 @@ Auth::routes([
     'register' => false,
 ]);
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('admin.home');
     Route::resource('ticket', TicketController::class);
 });
