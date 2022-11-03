@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="section-header">
-        <h1>Manage Ticket</h1>
+        <h1>{{ $title }}</h1>
     </div>
 
     {{-- Tabel Tiket --}}
@@ -13,6 +13,7 @@
                     <h4>Tabel Tiket</h4>
                 </div>
                 <div class="card-body">
+                    <a href="{{ route('ticket.create') }}" class="btn btn-success mb-3">Create New Ticket</a>
                     <div class="table-responsive">
                         <table id="myTable" class="table table-striped table-bordered" style="width:100%">
                             <thead>
@@ -38,7 +39,11 @@
                                     <td>
                                         <div class="badge badge-success">Closed</div>
                                     </td>
-                                    <td><a href="#" class="btn btn-primary btn-sm">Details</a></td>
+                                    <td>
+                                        <a href="#" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
+                                        <a href="#" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                        <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

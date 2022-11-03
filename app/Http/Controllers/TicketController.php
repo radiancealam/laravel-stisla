@@ -24,7 +24,8 @@ class TicketController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'Create New Ticket';
+        return view('admin.ticket.create', compact('title'));
     }
 
     /**
